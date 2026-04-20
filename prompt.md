@@ -46,9 +46,8 @@ Right column entity type: {entity type}
 For each pair listed above, do the two entity types match?
 Provide your answers ('yes' or 'no') in a JSON format like {'match_results': ['yes', 'no', 'yes']}
 **It is crucial that the order of the answers in the list matches exactly the order of the pairs as they were given in this prompt.**"
-```
 
-```python
+
 # Azure OpenAI API call to get LLM response and token usage details:
 def get_llm_response(
     client, prompt: str, max_tokens: int
