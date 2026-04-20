@@ -1,6 +1,19 @@
 ```python
+# Prompt for join prediction:
+Left column:
+- Column name: {left_col_name}
+- Table name: {left_table_name}
+
+Right column:
+- Column name: {right_col_name}
+- Table name: {right_table_name}
+
+Evaluate the potential for joining the left column and the right column based on all provided details. Consider semantic meaning from column and table names.
+
+Respond with a single, valid JSON object containing only one key: 'confidence'. The value for the 'confidence' key must be one of the strings: 'high', 'medium', or 'low'.
+
 # Prompt for entity type inference:
-"--- Column 1 ---
+--- Column 1 ---
 Table: {table_name}
 Column: {col_name}
 --- Column 2 ---
@@ -14,7 +27,7 @@ Respond in a JSON format like {'entity_types': ['label1', 'label2', 'label3']}"
 
 
 # Prompt for soft entity type matching:
-"--- Pair 1 ---
+--- Pair 1 ---
 Left table: {table name}
 Left column: {column name}
 Left column entity type: {entity type}
@@ -33,8 +46,9 @@ Right column entity type: {entity type}
 For each pair listed above, do the two entity types match?
 Provide your answers ('yes' or 'no') in a JSON format like {'match_results': ['yes', 'no', 'yes']}
 **It is crucial that the order of the answers in the list matches exactly the order of the pairs as they were given in this prompt.**"
+```
 
-
+```python
 # Azure OpenAI API call to get LLM response and token usage details:
 def get_llm_response(
     client, prompt: str, max_tokens: int
